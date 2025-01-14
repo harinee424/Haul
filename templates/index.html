@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="../static/css/main.css">
+{% endblock %}
+
+{% block body %}
+<section class="main-section">
+    <div class="clickhere">
+        <div class="text-content">
+
+        </div>
+        <a href="/login" class="start">START</a>
+    </div>
+    <div class="image">
+        <img src="../static/images/haul.jpeg" alt="haul">
+    </div>
+</section>
+{% endblock %}
+
+{% block javascript %}
+<script>
+let display_text = [
+    "I'm Haul Your Friend",
+    "Think big, act smart—I'm Haul, your trusted ally.",
+    "I'm Haul, your visionary AI for feelings."
+];
+
+let text_area = document.querySelector(".text-content");
+
+function typewriter_effect(container, content, i = 0, callback) {
+    if (i < content.length) {
+        container.textContent += content[i];
+        setTimeout(() => typewriter_effect(container, content, i + 1, callback), 100);
+    } else {
+        // Once fully typed, start the erase effect
+        setTimeout(() => erase_effect(container, content, callback), 3000);
+    }
+}
+
+function erase_effect(container, content, callback, i = content.length) {
+    if (i > 0) {
+        container.textContent = content.substring(0, i - 1);
+        setTimeout(() => erase_effect(container, content, callback, i - 1), 50);
+    } else if (callback) {
+        callback();
+    }
+}
+
+function display_texts_sequentially(texts, container) {
+    let index = 0;
+
+    function showNextText() {
+        if (index < texts.length) {
+            typewriter_effect(container, texts[index], 0, showNextText);
+            index++;
+        } else {
+            index = 0; 
+            showNextText(); 
+        }
+    }
+    showNextText();
+}
+
+display_texts_sequentially(display_text, text_area);
+
+</script>
+{% endblock %}

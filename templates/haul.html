@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="../static/css/haul.css">
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="logged-in">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="chat-contianer">
+    <div class="chats">
+
+        <p class="bot-text"><span>Hi, There! 😊</span></p>
+
+    </div>
+    <div class="chat-input-section">
+        <input type="text" name="chat-input" id="chat-input">
+        <button id="send-request">
+            <p>send</p>
+        </button>
+    </div>
+</div>
+
+{% block javascript %}
+<script src="../static/js/haul.js"></script>
+<script src="../static/js/alreadyloggedin.js"></script>
+{% endblock %}
+
+{% endblock %}
