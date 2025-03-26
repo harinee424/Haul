@@ -1,4 +1,4 @@
-# Haul 
+# Haul is Under Construction
 
 <p>Haul turns friendly chats into a fun, stress-free escape, where introverts can shine without the social pressure. Dive into meaningful conversations sprinkled with joy and laughter, all at your own pace!</p>
 
